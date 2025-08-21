@@ -1,0 +1,231 @@
+:root {
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --success: #10b981;
+  --success-hover: #059669;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --info: #0ea5e9;
+  --info-hover: #0284c7;
+  --secondary: #9ca3af;
+  --secondary-hover: #6b7280;
+  --text: #ffffff;
+  --muted: #9ca3af;
+  --panel-translucent: rgba(15, 23, 42, 0.72);
+  --border: rgba(255,255,255,0.08);
+  --bg: radial-gradient(1200px 800px at 10% 10%, #a78bfa22 0%, transparent 60%),
+        radial-gradient(1200px 800px at 90% 30%, #60a5fa22 0%, transparent 60%),
+        radial-gradient(1000px 700px at 40% 80%, #f472b622 0%, transparent 60%),
+        linear-gradient(135deg, #0ea5e9 0%, #7c3aed 100%);
+  --btn-grad-from: #ef3b8f;
+  --btn-grad-to: #3b82f6;
+}
+
+.todos-page {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.todos-page::before,
+.todos-page::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(600px 600px at 20% 20%, rgba(255,255,255,0.12) 0%, transparent 60%),
+              radial-gradient(500px 500px at 80% 40%, rgba(255,255,255,0.08) 0%, transparent 60%),
+              radial-gradient(700px 700px at 30% 80%, rgba(255,255,255,0.06) 0%, transparent 60%);
+  filter: blur(30px);
+  pointer-events: none;
+  animation: floatCircles 18s ease-in-out infinite alternate;
+}
+.todos-page::after { animation-duration: 24s; animation-direction: alternate-reverse; }
+
+.todos-container {
+  width: min(860px, 92vw);
+  background: var(--panel-translucent);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
+  padding: 28px;
+  animation: fadeIn 400ms ease-out both;
+}
+
+.todos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.todos-title {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(1.8rem, 2.5vw, 2.3rem);
+  font-weight: 800;
+}
+
+.todos-counter {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+.todos-counter span { color: var(--text); }
+.todos-counter span.completed { color: #16a34a; }
+.todos-counter span.pending { color: #dc2626; }
+
+.todos-filters {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.todo-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.todo-input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.10);
+  outline: none;
+  font-size: 1rem;
+  transition: box-shadow 180ms ease, border-color 180ms ease, background 160ms ease;
+  background: rgba(255,255,255,0.06);
+  color: #ffffff;
+  min-width: 0;
+}
+.todo-input::placeholder { color: #f8fafc; opacity: 0.95; }
+.todo-input:focus {
+  border-color: rgba(59,130,246,0.7);
+  box-shadow: 0 0 0 4px rgba(59,130,246,0.18);
+  background: rgba(255,255,255,0.10);
+}
+
+.btn {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 120ms ease, background-color 160ms ease, box-shadow 160ms ease, color 160ms ease;
+  will-change: transform;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+}
+
+/* Keep action buttons compact */
+.todo-form .btn,
+.todo-item .btn {
+  padding: 6px 12px;
+  font-size: 0.95rem;
+  width: auto;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(1px) scale(0.99); }
+
+.btn-primary { background: linear-gradient(135deg, var(--btn-grad-from), var(--btn-grad-to)); color: #fff; }
+.btn-primary:hover { filter: brightness(1.05); box-shadow: 0 6px 22px rgba(59,130,246,0.45); }
+
+.btn-success { background: var(--success); color: #fff; }
+.btn-success:hover { background: var(--success-hover); box-shadow: 0 6px 18px rgba(16,185,129,0.35); }
+
+.btn-danger { background: var(--danger); color: #fff; }
+.btn-danger:hover { background: var(--danger-hover); box-shadow: 0 6px 18px rgba(239,68,68,0.35); }
+
+.btn-info { background: var(--info); color: #fff; }
+.btn-info:hover { background: var(--info-hover); box-shadow: 0 6px 18px rgba(14,165,233,0.35); }
+
+.btn-secondary { background: var(--secondary); color: #fff; }
+.btn-secondary:hover { background: var(--secondary-hover); }
+
+.btn-filter {
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  font-size: 0.95rem;
+}
+.btn-filter:hover { background: rgba(255,255,255,0.10); }
+.btn-filter.active { background: var(--primary); color: #fff; border-color: transparent; }
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  animation: fadeInUp 420ms ease-out both;
+}
+
+.todo-title {
+  flex: 1;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #f8fafc;
+  transition: color 160ms ease, opacity 160ms ease;
+}
+.todo-title:hover { opacity: 0.9; }
+.todo-title.completed { text-decoration: line-through; color: var(--muted); }
+
+.edit-input {
+  flex: 1;
+  margin-right: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.10);
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+}
+.edit-input::placeholder { color: #fcfdff; }
+.edit-input:focus { border-color: var(--info); box-shadow: 0 0 0 4px rgba(14,165,233,0.18); background: rgba(255,255,255,0.10); }
+
+.loading { color: var(--muted); margin-bottom: 10px; text-align: center; }
+.error { color: #ff6b6b; margin-bottom: 10px; text-align: center; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatCircles {
+  from { transform: translateY(-2%) translateX(-2%) scale(1); }
+  to { transform: translateY(2%) translateX(2%) scale(1.02); }
+}
+
+
