@@ -15,6 +15,15 @@
   --btn-grad-to: #3b82f6;
 }
 
+/* Light theme overrides */
+.theme-light .register-page { background: linear-gradient(135deg, #abbcf5, #edbdd7); }
+.theme-light .register-card { background: rgba(255,255,255,0.9); border-color: #e5e7eb; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+.theme-light .register-title,
+.theme-light .register-form label { color: #0f172a; }
+.theme-light .input-group { background: #f8fafc; border-color: #e5e7eb; }
+.theme-light .input { color: #0f172a; }
+.theme-light .input::placeholder { color: #6b7280; }
+
 .register-page {
   min-height: 100vh;
   display: flex;

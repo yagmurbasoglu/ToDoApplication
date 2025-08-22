@@ -21,6 +21,17 @@
   --btn-grad-to: #3b82f6;
 }
 
+/* Light theme overrides */
+.theme-light .todos-page { background: linear-gradient(135deg, #abbcf5, #edbdd7); }
+.theme-light .todos-container { background: #ffffffcc; border-color: #e5e7eb; box-shadow: 0 10px 30px rgba(0,0,0,0.10); }
+.theme-light .todos-title { color: #0f172a; }
+.theme-light .todo-input { background: #fff; border-color: #e5e7eb; color: #0f172a; }
+.theme-light .todo-input::placeholder { color: #6b7280; }
+.theme-light .todo-item { background: #f9fafb; border-color: #e5e7eb; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.theme-light .todo-title { color: #111827; }
+.theme-light .btn-filter { background: #fff; border-color: #e5e7eb; color: #111827; }
+.theme-light .btn-filter:hover { background: #f3f4f6; }
+
 .todos-page {
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   min-height: 100vh;
@@ -57,6 +68,13 @@
   animation: fadeIn 400ms ease-out both;
 }
 
+@media (max-width: 640px) {
+  .todos-container { padding: 18px; border-radius: 16px; }
+  .todos-title { font-size: 1.6rem; }
+  .btn { font-size: 0.9rem; }
+  .todo-item { padding: 10px 12px; }
+}
+
 .todos-header {
   display: flex;
   justify-content: space-between;
@@ -66,7 +84,7 @@
 
 .todos-title {
   margin: 0;
-  color: var(--text);
+  color: #fff;
   font-size: clamp(1.8rem, 2.5vw, 2.3rem);
   font-weight: 800;
 }
@@ -173,6 +191,16 @@
   margin: 0;
 }
 
+/* Add details area under the form */
+.todo-add-details { margin-bottom: 14px; }
+.label-picker { display: flex; gap: 8px; margin: 8px 0 10px; flex-wrap: wrap; }
+.chip { padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.06); color: var(--text); font-size: 0.9rem; }
+.chip.inline { margin-right: 8px; }
+.chip.active { box-shadow: 0 0 0 3px rgba(59,130,246,0.25); border-color: rgba(59,130,246,0.7); }
+.chip.school { background: rgba(96,165,250,0.15); border-color: rgba(96,165,250,0.45); }
+.chip.work { background: rgba(16,185,129,0.15); border-color: rgba(16,185,129,0.45); }
+.chip.sport { background: rgba(244,114,182,0.15); border-color: rgba(244,114,182,0.45); }
+
 .todo-item {
   display: flex;
   align-items: center;
@@ -185,6 +213,8 @@
   box-shadow: 0 1px 3px rgba(0,0,0,0.25);
   animation: fadeInUp 420ms ease-out both;
 }
+.todo-detail { margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(255,255,255,0.15); }
+.todo-desc { margin: 6px 0 0; color: var(--text); opacity: 0.95; }
 
 .todo-title {
   flex: 1;
@@ -227,5 +257,7 @@
   from { transform: translateY(-2%) translateX(-2%) scale(1); }
   to { transform: translateY(2%) translateX(2%) scale(1.02); }
 }
+
+
 
 
