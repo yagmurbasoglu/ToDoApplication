@@ -1,4 +1,4 @@
-@ToDoApplication.API_HostAddress = http://localhost:5115
+@ToDoApplication.API_HostAddress = http://localhost:5287
 
 GET {{ToDoApplication.API_HostAddress}}/weatherforecast/
 Accept: application/json
