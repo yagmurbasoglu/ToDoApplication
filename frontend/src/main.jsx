@@ -20,6 +20,18 @@ function PublicRoute({ children }) {
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
+      {/* Persist theme selection on initial load */}
+      {(() => {
+        if (typeof document !== 'undefined') {
+          const saved = localStorage.getItem('theme')
+          if (saved === 'light') {
+            document.body.classList.add('theme-light')
+          } else {
+            document.body.classList.remove('theme-light')
+          }
+        }
+        return null
+      })()}
       <Routes>
         <Route path="/" element={<App />}>
           {/* İlk açılış login sayfası */}

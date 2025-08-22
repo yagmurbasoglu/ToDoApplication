@@ -9,6 +9,7 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [isLight, setIsLight] = useState(() => localStorage.getItem('theme') === 'light')
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
@@ -31,6 +32,21 @@ export default function Login() {
 
   return (
     <div className="login-page">
+      <button
+        className="theme-toggle"
+        onClick={() => {
+          const next = !isLight
+          setIsLight(next)
+          localStorage.setItem('theme', next ? 'light' : 'dark')
+          if (typeof document !== 'undefined') {
+            document.body.classList.toggle('theme-light', next)
+          }
+        }}
+        aria-label={isLight ? 'Gece moduna geç' : 'Açık moda geç'}
+        title={isLight ? 'Gece moduna geç' : 'Açık moda geç'}
+      >
+        {isLight ? '🌙' : '☀️'}
+      </button>
       <div className="login-card">
         <h2 className="login-title">Giriş Yap</h2>
         <form onSubmit={handleSubmit} className="login-form">
